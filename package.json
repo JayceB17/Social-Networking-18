@@ -1,0 +1,19 @@
+{
+    "name": "Social-Networkin-18",
+    "version": "1.0.0",
+    "description": "A reverse enginer activity for Mongoose",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "start": "node index",
+      "dev": "nodemon index",
+      "seed": "node utils/seed"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "mongoose": "^7.0.2"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.9"
+    }
+  }

@@ -3,14 +3,14 @@ const Thought = require('../models/Thought');
 
 async function getAllUsers(req, res) {
   try {
-    const users = await User.find().select('-__v');
+    const users = await User.find().select('-__v').populate("thoughts");
     res.json(users);
   } catch (err) {
     res.status(500).json({ error: 'An error occurred while fetching users' });
   }
 }
 
-async function getUserById(req, res) {
+async function getUser(req, res) {
   try {
     const user = await User.findById(req.params.id)
       .populate('thoughts')
@@ -84,7 +84,7 @@ async function addFriend(req, res) {
   }
 }
 
-async function removeFriend(req, res) {
+async function deleteFriend(req, res) {
   try {
     const { userId, friendId } = req.params;
     const user = await User.findById(userId);
@@ -109,10 +109,10 @@ async function removeFriend(req, res) {
 
 module.exports = {
   getAllUsers,
-  getUserById,
+  getUser,
   createUser,
   updateUser,
   deleteUser,
   addFriend,
-  removeFriend
+  deleteFriend
 };
